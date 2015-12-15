@@ -1,0 +1,63 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+}
+
+
+/*Instructions*/
+
+.instructions {
+    margin: 20px auto;
+    width: 100%;
+    height: 125px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.25em;
+}
+
+
+/*Triggers*/
+.sampler {
+    margin: 30px auto;
+    text-align: center;
+    width: 100%;
+}
+
+.trigger {
+    margin: 0 20px 0 20px;
+    height: 100px;
+    width: 15%;
+    padding: 60px 10px 0 10px;
+    text-align: center;
+    color: white;
+    font-size:2.25em;
+    display: inline-block;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.trigger:hover {
+    opacity: 0.75;
+    cursor: pointer;
+}
+
+.play {
+    background-color: purple;
+}
+
+.stop {
+    background-color: darkred;
+}
+
+.playing-now {
+    background-color: darkred;
+    height: 120px;
+    width: 17%;
+}
