@@ -3,6 +3,7 @@ $(document).ready(function(){
     var context = new (window.AudioContext || window.webkitAudioContext)(),
         oscillator,
         gain,
+        gainValue,
         trig = $('.trigger'),
         slider = $('.slider'),
         soundCalled = false;
@@ -13,13 +14,14 @@ $(document).ready(function(){
         value: 80,
         slide: function(event, ui){
             $('.slider-test').text(Math.floor(ui.value/10));
+            gainValue = ui.value/100;
             if (soundCalled){
                 setVolume(ui.value/100);
             }
         }
     });
     
-    var gainValue = slider.slider('value')/100;
+    gainValue = slider.slider('value')/100;
     
     $('.play').on('click', function(){
         soundToggle();
