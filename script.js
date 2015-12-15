@@ -6,33 +6,44 @@ $(document).ready(function(){
         trig = $('.trigger');
     
     $('.play').on('click', function(){
-        playToggle();
+        soundToggle();
     });
     
     $(document).keypress(function(){
-        playToggle();
+        soundToggle();
     });
     
-    function playToggle () {
+    $('.slider').slider();
+  
+    
+    function soundToggle () {
         trig.toggleClass('stop').toggleClass('play');
         
         if (trig.hasClass('stop')){
-            oscillator = context.createOscillator(); // Create sound source
-            //oscillator.connect(context.destination); // Connect sound to output
-            oscillator.type = 'sine';
-            
-            gain = context.createGain();
-            gain.gain.value = 1;
-            oscillator.connect(gain);
-            gain.connect(context.destination);
-            
-            oscillator.start();
-            trig.text('Stop');
+            soundOn();
         }
         else {
-            oscillator.stop();
-            oscillator.disconnect();
-            trig.text('Play');
+            soundOff();
         }
+    }
+    
+    function soundOn () {
+        oscillator = context.createOscillator(); // Create sound source
+        //oscillator.connect(context.destination); // Connect sound to output
+        oscillator.type = 'sine';
+
+        gain = context.createGain();
+        gain.gain.value = 1;
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+
+        oscillator.start();
+        trig.text('Stop');
+    }
+    
+    function soundOff () {
+        oscillator.stop();
+        oscillator.disconnect();
+        trig.text('Play');
     }
 });

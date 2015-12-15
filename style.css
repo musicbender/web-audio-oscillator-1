@@ -4,7 +4,6 @@ body, html {
     font-family: Montserrat;
 }
 
-
 /*Instructions*/
 
 .instructions {
@@ -21,7 +20,6 @@ h1 {
 h2 {
     font-size: 1.25em;
 }
-
 
 /*Triggers*/
 .sampler {
@@ -62,3 +60,25 @@ h2 {
     height: 120px;
     width: 17%;
 }
+
+/*Sliders*/
+
+.slider-section {
+    margin: 20px auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.slider-title {
+    margin: 0 20px 0 0;
+    display: inline-block;
+    font-size: 1.75em;
+}
+
+.slider {
+    width: 50%;
+    display: inline-block;
+}
+
+
