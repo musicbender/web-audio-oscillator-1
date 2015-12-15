@@ -4,16 +4,19 @@ $(document).ready(function(){
         oscillator,
         gain,
         gainValue,
+        pitchValue,
         trig = $('.trigger'),
         slider = $('.slider'),
+        gainSlider = $('.gain'),
+        pitchSlider = $('.pitch'),
         soundCalled = false;
     
-    slider.slider({
+    gainSlider.slider({
         min: 0,
         max: 100,
         value: 80,
         slide: function(event, ui){
-            $('.slider-test').text(Math.floor(ui.value/10));
+            $('.gain-text').text(Math.floor(ui.value/10));
             gainValue = ui.value/100;
             if (soundCalled){
                 setVolume(ui.value/100);
@@ -21,6 +24,20 @@ $(document).ready(function(){
         }
     });
     
+    pitchSlider.slider({
+        min: 200,
+        max: 2000,
+        value: 1085,
+        slide: function(event, ui){
+            $('.pitch-text').text(ui.value + 'hz');
+            pitchValue = ui.value;
+            if (soundCalled){
+                setPitch(ui.value);
+            }
+        }
+    });
+    
+    pitchValue = 1085;
     gainValue = slider.slider('value')/100;
     
     $('.play').on('click', function(){
@@ -30,9 +47,7 @@ $(document).ready(function(){
     $(document).keypress(function(){
         soundToggle();
     });
-    
-    console.log(gainValue);
-  
+
     function soundToggle () {
         trig.toggleClass('stop').toggleClass('play');
         if (trig.hasClass('stop')){
@@ -47,6 +62,7 @@ $(document).ready(function(){
         soundCalled = true;
         oscillator = context.createOscillator(); // Create sound source
         oscillator.type = 'sine';
+        oscillator.frequency.value = pitchValue;
         gain = context.createGain();
         gain.gain.value = gainValue;
         oscillator.connect(gain);
@@ -63,5 +79,9 @@ $(document).ready(function(){
     
     function setVolume (value) {
         gain.gain.value = value;
+    }
+    
+    function setPitch (value) {
+        oscillator.frequency.value = value;
     }
 });

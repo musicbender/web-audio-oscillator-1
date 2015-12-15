@@ -70,6 +70,12 @@ h2 {
     text-align: center;
 }
 
+.slider-div {
+    margin: 10px auto 10px auto;
+    width: 100%;
+    display: block;
+}
+
 .slider-title {
     margin: 0 20px 0 0;
     display: inline-block;
@@ -77,8 +83,15 @@ h2 {
 }
 
 .slider {
-    width: 50%;
+    width: 30%;
     display: inline-block;
+}
+
+.slider-section p {
+    margin: 0;
+    padding: 0 0 0 20px;
+    display: inline-block;
+    box-sizing: border-box;
 }
 
 
